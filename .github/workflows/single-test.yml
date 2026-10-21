@@ -1,11 +1,12 @@
 name: Single Test
-
+run-name: 
 on:
   push: 
     branches: [main]
   pull_request:
     branches: [main]
   workflow_dispatch:
+  
 jobs:
   build:
     name: Example Tests
