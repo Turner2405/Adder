@@ -1,1 +1,35 @@
 name: Single Test
+
+on:
+  push: 
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  build:
+    name: Example Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+        
+
+      - name: Run a single maven test class
+        run: mvn test -Dtest=AdderTest
+      # Adder Test is the class name not the file name. Don't include the file extentsion
+      
+  
+      - name: Run a single maven test class
+        run: mvn test -Dtest=AdderTest#ShouldAddTwoNumbers
+      # to run a specific test from a file write className#TestName
+      
+  
